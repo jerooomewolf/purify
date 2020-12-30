@@ -23,9 +23,9 @@ class Purify
     {
         $config = HTMLPurifier_Config::create($this->getSettings());
 
-        if (is_null($config['Cache.SerializerPath'])) {
+        if (is_null($this->getSettings()['Cache.SerializerPath'])) {
             $factory = HTMLPurifier_DefinitionCacheFactory::instance();
-            $factory->register('LaravelCache', 'HTMLPurifier_DefinitionCache_LaravelCache');
+            $factory->register('LaravelCache', LaravelCache::class);
             $config->set('Cache.DefinitionImpl', 'LaravelCache');
         }
 

@@ -1,6 +1,11 @@
 <?php
 
-class HTMLPurifier_DefinitionCache_LaravelCache extends HTMLPurifier_DefinitionCache
+namespace Stevebauman\Purify;
+
+use HTMLPurifier_DefinitionCache;
+use Illuminate\Support\Facades\Cache;
+
+class LaravelCache extends HTMLPurifier_DefinitionCache
 {
     private $tag = '.laravelcache';
 
