@@ -5,7 +5,6 @@ namespace Stevebauman\Purify;
 use HTMLPurifier;
 use HTMLPurifier_Config;
 use HTMLPurifier_ConfigSchema;
-use HTMLPurifier_DefinitionCacheFactory;
 
 class Purify
 {
@@ -24,7 +23,7 @@ class Purify
         $config = HTMLPurifier_Config::create($this->getSettings());
 
         if (is_null($this->getSettings()['Cache.SerializerPath'])) {
-            $factory = HTMLPurifier_DefinitionCacheFactory::instance();
+            $factory = HTMLPurifierDefinitionCacheFactory::instance();
             $factory->register('LaravelCache', LaravelCache::class);
             $config->set('Cache.DefinitionImpl', 'LaravelCache');
         }
